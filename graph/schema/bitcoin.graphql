@@ -1,0 +1,13 @@
+type BitcoinPrice {
+  amount: String!
+  currency: String!
+  base: String!
+}
+
+type dataBitcoinPrice {
+  data: BitcoinPrice!
+}
+
+extend type Query {
+  getBitcoinPrice(currency: String): dataBitcoinPrice!
+}

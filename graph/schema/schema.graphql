@@ -1,0 +1,34 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+directive @goModel(
+  model: String
+  models: [String!]
+) on OBJECT | INPUT_OBJECT | SCALAR | ENUM | INTERFACE | UNION
+
+directive @goField(
+  forceResolver: Boolean
+  name: String
+) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION
+
+type Address {
+  road: String!
+  locality: String!
+}
+
+type User @goModel(model: "graphql-poc/graph/myModels.User") {
+  firstname: String!
+  lastname: String!
+  address: Address! @goField(forceResolver: true)
+}
+
+type Name {
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  getUsers: [User!]
+  getName: Name!
+}

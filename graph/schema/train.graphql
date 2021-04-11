@@ -1,0 +1,8 @@
+type train {
+  number: Int!
+  name: String!
+}
+
+extend type Query {
+  getTrains: [train]!
+}
